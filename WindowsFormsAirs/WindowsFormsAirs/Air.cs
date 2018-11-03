@@ -23,7 +23,6 @@ namespace WindowsFormsAirs
         /// <param name="maxSpeed">Максимальная скорость</param>
         /// <param name="weight">Вес самолета</param>
         /// <param name="mainColor">Основной цвет кузова</param>
-
         public Air(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
