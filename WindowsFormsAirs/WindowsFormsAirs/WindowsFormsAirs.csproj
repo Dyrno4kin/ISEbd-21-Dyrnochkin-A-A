@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Air.cs" />
-    <Compile Include="Directions.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="FormAir.cs">
       <SubType>Form</SubType>
     </Compile>

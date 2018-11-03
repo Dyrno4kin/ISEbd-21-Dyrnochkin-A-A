@@ -51,16 +51,16 @@ namespace WindowsFormsAirs
             switch (name)
             {
                 case "buttonUp":
-                    air.MoveTransport(Directions.direction.Up);
+                    air.MoveTransport(Direction.Up);
                     break;
                 case "buttonDown":
-                    air.MoveTransport(Directions.direction.Down);
+                    air.MoveTransport(Direction.Down);
                     break;
                 case "buttonLeft":
-                    air.MoveTransport(Directions.direction.Left);
+                    air.MoveTransport(Direction.Left);
                     break;
                 case "buttonRight":
-                    air.MoveTransport(Directions.direction.Right);
+                    air.MoveTransport(Direction.Right);
                     break;
             }
             Draw();
