@@ -7,22 +7,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAirs
 {
-    class Air
+    public class Air : Vehicle
     {
-        /// <summary>
-        /// Левая координата отрисовки самолета
-        /// </summary>
-        private float _startPosX;
-        /// <summary>
-        /// Правая кооридната отрисовки самолета
-        /// </summary>
-        private float _startPosY;
-        /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        private int _pictureWidth;
-        //Высота окна отрисовки
-        private int _pictureHeight;
         /// <summary>
         /// Ширина отрисовки самолета
         /// </summary>
@@ -31,23 +17,6 @@ namespace WindowsFormsAirs
         /// Высота отрисовки самолета
         /// </summary>
         private const int carHeight = 90;
-        /// <summary>
-        /// Максимальная скорость
-        /// </summary>
-        public int MaxSpeed { private set; get; }
-        /// <summary>
-        /// Вес самолета
-        /// </summary>
-        public float Weight { private set; get; }
-        /// <summary>
-        /// Основной цвет самолета
-        /// </summary>
-        public Color MainColor { private set; get; }
-        /// <summary>
-        /// Дополнительный цвет
-        /// </summary>
-        public Color DopColor { private set; get; }
-
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -61,27 +30,20 @@ namespace WindowsFormsAirs
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
-            DopColor = dopColor;
         }
-        /// <summary>
-        /// Установка позиции самолета
-        /// </summary>
-        /// <param name="x">Координата X</param>
-        /// <param name="y">Координата Y</param>
-        /// <param name="width">Ширина картинки</param>
-        /// <param name="height">Высота картинки</param>
-        public void SetPosition(int x, int y, int width, int height)
+
+        public Air(int maxSpeed, float weight, Color mainColor)
         {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
+            MaxSpeed = maxSpeed;
+            Weight = weight;
+            MainColor = mainColor;
         }
+
         /// <summary>
         /// Изменение направления пермещения
         /// </summary>
         /// <param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
+        public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
             switch (direction)
@@ -120,17 +82,17 @@ namespace WindowsFormsAirs
         /// Отрисовка самолета
         /// </summary>
         /// <param name="g"></param>
-        public void DrawAir(Graphics g)
+        public override void DrawAir(Graphics g)
         {
-            Brush body = new SolidBrush(Color.Gray);
-            g.FillEllipse(body, _startPosX + 80, _startPosY - 6, 60, 40);
+            Brush body = new SolidBrush(MainColor);
             g.FillEllipse(body, _startPosX + 110, _startPosY + 13, 40, 20);
-            g.FillRectangle(body, _startPosX + 55, _startPosY - 5, 60, 38);
-            g.FillRectangle(body, _startPosX + 19, _startPosY - 5, 60, 10);
-            g.FillRectangle(body, _startPosX + 19, _startPosY - 27, 15, 25);
-            g.FillRectangle(body, _startPosX + 5, _startPosY - 16, 40, 6);
-            Pen pen = new Pen(Color.Gray);
-            g.DrawLine(pen, _startPosX + 60, _startPosY - 5, _startPosX + 20, _startPosY - 5);
+            g.FillRectangle(body, _startPosX + 55, _startPosY + 5, 69, 28);
+            g.FillRectangle(body, _startPosX + 21, _startPosY - 25, 15, 31);
+            g.FillRectangle(body, _startPosX + 7, _startPosY - 16, 40, 6);
+            g.FillEllipse(body, _startPosX + 120, _startPosY + 4, 15, 10);
+            g.FillEllipse(body, _startPosX + 125, _startPosY + 11, 15, 10);
+            g.FillEllipse(body, _startPosX + 123, _startPosY + 10, 15, 10);
+            Pen pen = new Pen(MainColor);
             float yPos = 32;
             while (yPos > 4)
             {
@@ -138,7 +100,7 @@ namespace WindowsFormsAirs
                 yPos--;
             }
             Brush window = new SolidBrush(Color.LightBlue);
-            g.FillEllipse(window, _startPosX + 120, _startPosY + 3, 10, 10);
+            g.FillEllipse(window, _startPosX + 120, _startPosY + 9, 12, 6);
         }
     }
 }

@@ -25,20 +25,7 @@ namespace WindowsFormsAirs
             air.DrawAir(gr);
             pictureBoxAir.Image = bmp;
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Создать"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            air = new Air(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue,
-           Color.Yellow);
-            air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAir.Width,
-           pictureBoxAir.Height);
-            Draw();
-        }
+
         /// <summary>
         /// Обработка нажатия кнопок управления
         /// </summary>
@@ -63,6 +50,30 @@ namespace WindowsFormsAirs
                     air.MoveTransport(Direction.Right);
                     break;
             }
+            Draw();
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Создать самолет"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonAddAir_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            air = new Air(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray);
+            air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAir.Width, pictureBoxAir.Height);
+            Draw();
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Создать гоночный автомобиль"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonAddAirBus_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            air = new AirBus(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Gray, Color.LightBlue, true);
+            air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAir.Width, pictureBoxAir.Height);
             Draw();
         }
     }
