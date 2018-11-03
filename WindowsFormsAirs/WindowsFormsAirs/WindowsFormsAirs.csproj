@@ -62,12 +62,16 @@
       <DependentUpon>FormParking.cs</DependentUpon>
     </Compile>
     <Compile Include="IAir.cs" />
+    <Compile Include="MultiLevelParking.cs" />
     <Compile Include="Parking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="FormAir.resx">
       <DependentUpon>FormAir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormParking.resx">
+      <DependentUpon>FormParking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
