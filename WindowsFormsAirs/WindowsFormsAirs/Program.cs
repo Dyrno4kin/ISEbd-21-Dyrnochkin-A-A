@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAirs
 {
+    public delegate void airDelegate(IAir air);
     static class Program
     {
         /// <summary>
