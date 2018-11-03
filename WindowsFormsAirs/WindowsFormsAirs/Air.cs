@@ -122,14 +122,14 @@ namespace WindowsFormsAirs
         /// <param name="g"></param>
         public void DrawAir(Graphics g)
         {
-            Brush body = new SolidBrush(Color.Gray);
+            Brush body = new SolidBrush(MainColor);
             g.FillEllipse(body, _startPosX + 80, _startPosY - 6, 60, 40);
             g.FillEllipse(body, _startPosX + 110, _startPosY + 13, 40, 20);
             g.FillRectangle(body, _startPosX + 55, _startPosY - 5, 60, 38);
             g.FillRectangle(body, _startPosX + 19, _startPosY - 5, 60, 10);
             g.FillRectangle(body, _startPosX + 19, _startPosY - 27, 15, 25);
             g.FillRectangle(body, _startPosX + 5, _startPosY - 16, 40, 6);
-            Pen pen = new Pen(Color.Gray);
+            Pen pen = new Pen(MainColor);
             g.DrawLine(pen, _startPosX + 60, _startPosY - 5, _startPosX + 20, _startPosY - 5);
             float yPos = 32;
             while (yPos > 4)
@@ -137,7 +137,7 @@ namespace WindowsFormsAirs
                 g.DrawLine(pen, _startPosX + 55, _startPosY + yPos, _startPosX + 20, _startPosY + 4);
                 yPos--;
             }
-            Brush window = new SolidBrush(Color.LightBlue);
+            Brush window = new SolidBrush(DopColor);
             g.FillEllipse(window, _startPosX + 120, _startPosY + 3, 10, 10);
         }
     }
