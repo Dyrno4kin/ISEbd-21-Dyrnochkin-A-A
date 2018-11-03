@@ -92,6 +92,7 @@ namespace WindowsFormsAirs
             }
             Brush window = new SolidBrush(Color.LightBlue);
             g.FillEllipse(window, _startPosX + 120, _startPosY + 9, 12, 6);
+
         }
     }
 }
