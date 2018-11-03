@@ -16,7 +16,7 @@ namespace WindowsFormsAirs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAir());
+            Application.Run(new FormParking());
         }
     }
 }

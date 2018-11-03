@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAirs
 {
-    interface IAir
+    public interface IAir
     {
         /// <summary>
         /// Установка позиции самолета
