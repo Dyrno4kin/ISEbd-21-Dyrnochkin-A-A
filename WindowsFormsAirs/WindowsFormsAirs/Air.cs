@@ -31,6 +31,21 @@ namespace WindowsFormsAirs
         }
 
         /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+        public Air(string info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
+        }
+
+        /// <summary>
         /// Изменение направления пермещения
         /// </summary>
         /// <param name="direction">Направление</param>
@@ -92,6 +107,11 @@ namespace WindowsFormsAirs
             }
             Brush window = new SolidBrush(Color.LightBlue);
             g.FillEllipse(window, _startPosX + 120, _startPosY + 9, 12, 6);
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }
