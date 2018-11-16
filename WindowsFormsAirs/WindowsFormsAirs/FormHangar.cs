@@ -28,8 +28,8 @@ namespace WindowsFormsAirs
         public FormHangar()
         {
             InitializeComponent();
-            parking = new MultiLevelHangar(countLevel, pictureBoxAir.Width,
-           pictureBoxAir.Height);
+            parking = new MultiLevelHangar(countLevel, pictureBoxHangar.Width,
+           pictureBoxHangar.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -44,10 +44,10 @@ namespace WindowsFormsAirs
         {
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBoxAir.Width, pictureBoxAir.Height);
+                Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBoxAir.Image = bmp;
+                pictureBoxHangar.Image = bmp;
             }
         }
         
