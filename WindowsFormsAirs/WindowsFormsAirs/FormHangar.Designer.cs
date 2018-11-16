@@ -2,7 +2,7 @@
 
 namespace WindowsFormsAirs
 {
-    partial class FormParking
+    partial class FormHangar
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace WindowsFormsAirs
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
+            this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
             this.pictureBoxTakeAir = new System.Windows.Forms.PictureBox();
             this.labelTakeAir = new System.Windows.Forms.Label();
             this.labelNumberMesto = new System.Windows.Forms.Label();
@@ -44,19 +44,19 @@ namespace WindowsFormsAirs
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBoxParking
+            // pictureBoxHangar
             // 
-            this.pictureBoxParking.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.pictureBoxParking.Location = new System.Drawing.Point(12, 50);
-            this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(403, 403);
-            this.pictureBoxParking.TabIndex = 0;
-            this.pictureBoxParking.TabStop = false;
+            this.pictureBoxHangar.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBoxHangar.Location = new System.Drawing.Point(12, 50);
+            this.pictureBoxHangar.Name = "pictureBoxHangar";
+            this.pictureBoxHangar.Size = new System.Drawing.Size(403, 403);
+            this.pictureBoxHangar.TabIndex = 0;
+            this.pictureBoxHangar.TabStop = false;
             // 
             // pictureBoxTakeAir
             // 
@@ -145,14 +145,14 @@ namespace WindowsFormsAirs
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -164,7 +164,7 @@ namespace WindowsFormsAirs
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
-            // FormParking
+            // FormHangar
             // 
             this.ClientSize = new System.Drawing.Size(611, 465);
             this.Controls.Add(this.buttonSetAir);
@@ -174,11 +174,11 @@ namespace WindowsFormsAirs
             this.Controls.Add(this.labelNumberMesto);
             this.Controls.Add(this.labelTakeAir);
             this.Controls.Add(this.pictureBoxTakeAir);
-            this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.pictureBoxHangar);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "FormParking";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
+            this.Name = "FormHangar";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -188,7 +188,7 @@ namespace WindowsFormsAirs
         }
 
         #endregion
-        private PictureBox pictureBoxParking;
+        private PictureBox pictureBoxHangar;
         private PictureBox pictureBoxTakeAir;
         private Label labelTakeAir;
         private Label labelNumberMesto;

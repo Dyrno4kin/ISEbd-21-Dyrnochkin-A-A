@@ -10,7 +10,7 @@ namespace WindowsFormsAirs
     /// <summary>
     /// Класс-хранидище парковок
     /// </summary>
-    public class MultiLevelParking
+    public class MultiLevelHangar
     {
         /// <summary>
         /// Список с уровнями парковки
@@ -36,7 +36,7 @@ namespace WindowsFormsAirs
         /// <param name="countStages">Количество уровенй парковки</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
-        public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
+        public MultiLevelHangar(int countStages, int pictureWidth, int pictureHeight)
         {
             parkingStages = new List<Parking<IAir>>();
             this.pictureWidth = pictureWidth;
