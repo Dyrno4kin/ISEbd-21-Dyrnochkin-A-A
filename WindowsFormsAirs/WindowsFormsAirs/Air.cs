@@ -12,11 +12,11 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Ширина отрисовки самолета
         /// </summary>
-        private const int carWidth = 140;
+        private const int airWidth = 140;
         /// <summary>
         /// Высота отрисовки самолета
         /// </summary>
-        private const int carHeight = 90;
+        private const int airHeight = 90;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -41,7 +41,7 @@ namespace WindowsFormsAirs
             {
                 // вправо
                 case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - carWidth)
+                    if (_startPosX + step < _pictureWidth - airWidth)
                     {
                         _startPosX += step;
                     }
@@ -62,7 +62,7 @@ namespace WindowsFormsAirs
                     break;
                 //вниз
                 case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - carHeight)
+                    if (_startPosY + step < _pictureHeight - airHeight)
                     {
                         _startPosY += step;
                     }
