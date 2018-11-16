@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace WindowsFormsAirs
 {
     /// <summary>
-    /// Класс-хранидище парковок
+    /// Класс-хранидище ангар
     /// </summary>
-    public class MultiLevelParking
+    public class MultiLevelHangar
     {
         /// <summary>
-        /// Список с уровнями парковки
+        /// Список с уровнями ангара
         /// </summary>
-        List<Parking<IAir>> parkingStages;
+        List<Hangar<IAir>> hangarStages;
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>
@@ -22,15 +22,15 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="countStages">Количество уровенй парковки</param>
+        /// <param name="countStages">Количество уровенй в анагре</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
-        public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
+        public MultiLevelHangar(int countStages, int pictureWidth, int pictureHeight)
         {
-            parkingStages = new List<Parking<IAir>>();
+            hangarStages = new List<Hangar<IAir>>();
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<IAir>(countPlaces, pictureWidth,
+                hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
                pictureHeight));
             }
         }
@@ -39,13 +39,13 @@ namespace WindowsFormsAirs
         /// </summary>
         /// <param name="ind"></param>
         /// <returns></returns>
-        public Parking<IAir> this[int ind]
+        public Hangar<IAir> this[int ind]
         {
             get
             {
-                if (ind > -1 && ind < parkingStages.Count)
+                if (ind > -1 && ind < hangarStages.Count)
                 {
-                    return parkingStages[ind];
+                    return hangarStages[ind];
                 }
                 return null;
             }

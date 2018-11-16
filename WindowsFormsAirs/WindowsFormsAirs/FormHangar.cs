@@ -13,17 +13,17 @@ namespace WindowsFormsAirs
     public partial class FormHangar : Form
     {
         /// <summary>
-        /// Объект от класса многоуровневой парковки
+        /// Объект от класса многоуровнего ангара
         /// </summary>
-        MultiLevelParking parking;
+        MultiLevelHangar hangar;
         /// <summary>
-        /// Количество уровней-парковок
+        /// Количество уровней
         /// </summary>
         private const int countLevel = 5;
         public FormHangar()
         {
             InitializeComponent();
-            parking = new MultiLevelParking(countLevel, pictureBoxHangar.Width,
+            hangar = new MultiLevelHangar(countLevel, pictureBoxHangar.Width,
            pictureBoxHangar.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
@@ -33,7 +33,7 @@ namespace WindowsFormsAirs
             listBoxLevels.SelectedIndex = 0;
         }
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки ангара
         /// </summary>
         private void Draw()
         {
@@ -41,7 +41,7 @@ namespace WindowsFormsAirs
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
                 Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBoxLevels.SelectedIndex].Draw(gr);
+                hangar[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxHangar.Image = bmp;
             }
         }
@@ -58,7 +58,7 @@ namespace WindowsFormsAirs
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     var air = new Air(100, 1000, dialog.Color);
-                    int place = parking[listBoxLevels.SelectedIndex] + air;
+                    int place = hangar[listBoxLevels.SelectedIndex] + air;
                     if (place == -1)
                     {
                         MessageBox.Show("Нет свободных мест", "Ошибка",
@@ -86,7 +86,7 @@ namespace WindowsFormsAirs
                     {
                         var air = new AirBus(100, 1000, dialog.Color, dialogDop.Color,
                        true);
-                        int place = parking[listBoxLevels.SelectedIndex] + air;
+                        int place = hangar[listBoxLevels.SelectedIndex] + air;
                         if (place == -1)
                         {
                             MessageBox.Show("Нет свободных мест", "Ошибка",
@@ -108,7 +108,7 @@ namespace WindowsFormsAirs
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var air = parking[listBoxLevels.SelectedIndex] -
+                    var air = hangar[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
                     if (air != null)
                     {
