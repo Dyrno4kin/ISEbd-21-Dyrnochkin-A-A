@@ -22,7 +22,7 @@ namespace WindowsFormsAirs
         /// </summary>
         FormAirConfig form;
         /// <summary>
-        /// Количество уровней-парковок
+        /// Количество уровней
         /// </summary>
         private const int countLevel = 5;
         public FormHangar()
