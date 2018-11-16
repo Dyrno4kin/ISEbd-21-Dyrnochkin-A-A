@@ -113,14 +113,14 @@ namespace WindowsFormsAirs
         {
             if (air != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevels.SelectedIndex] + air;
+                int place = hangar[listBoxLevels.SelectedIndex] + air;
                 if (place > -1)
                 {
                     Draw();
                 }
                 else
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show("Самолет не удалось поставить");
                 }
             }
         }
