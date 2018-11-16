@@ -54,15 +54,15 @@ namespace WindowsFormsAirs
         /// Логика действия: на парковку добавляется самолет
         /// </summary>
         /// <param name="p">Парковка</param>
-        /// <param name="car">Добавляемый самолет</param>
+        /// <param name="air">Добавляемый самолет</param>
         /// <returns></returns>
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Parking<T> p, T air)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places[i] = car;
+                    p._places[i] = air;
                     p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,
                      i % 5 * p._placeSizeHeight + 40, p.PictureWidth,
                     p.PictureHeight);
@@ -86,9 +86,9 @@ namespace WindowsFormsAirs
             }
             if (!p.CheckFreePlace(index))
             {
-                T car = p._places[index];
+                T air = p._places[index];
                 p._places[index] = null;
-                return car;
+                return air;
             }
             return null;
         }
