@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace WindowsFormsAirs
 {
     /// <summary>
-    /// Класс-хранидище парковок
+    /// Класс-хранидище ангар
     /// </summary>
     public class MultiLevelHangar
     {
         /// <summary>
-        /// Список с уровнями парковки
+        /// Список с уровнями ангара
         /// </summary>
         List<Hangar<IAir>> hangarStages;
         /// <summary>
@@ -22,15 +22,15 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="countStages">Количество уровенй парковки</param>
+        /// <param name="countStages">Количество уровенй в анагре</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
         public MultiLevelHangar(int countStages, int pictureWidth, int pictureHeight)
         {
-            parkingStages = new List<Hangar<IAir>>();
+            hangarStages = new List<Hangar<IAir>>();
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
+                hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
                pictureHeight));
             }
         }
@@ -43,9 +43,9 @@ namespace WindowsFormsAirs
         {
             get
             {
-                if (ind > -1 && ind < parkingStages.Count)
+                if (ind > -1 && ind < hangarStages.Count)
                 {
-                    return parkingStages[ind];
+                    return hangarStages[ind];
                 }
                 return null;
             }

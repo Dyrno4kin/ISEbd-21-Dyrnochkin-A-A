@@ -18,7 +18,7 @@ namespace WindowsFormsAirs
         /// </summary>
         private Dictionary<int, T> _places;
         /// <summary>
-        /// Максимальное количество мест на парковке
+        /// Максимальное количество мест в ангаре
         /// </summary>
         private int _maxCount;
         /// <summary>
@@ -40,9 +40,9 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="sizes">Количество мест на парковке</param>
-        /// <param name="pictureWidth">Рамзер парковки - ширина</param>
-        /// <param name="pictureHeight">Рамзер парковки - высота</param>
+        /// <param name="sizes">Количество мест в ангаре</param>
+        /// <param name="pictureWidth">Рамзер ангара - ширина</param>
+        /// <param name="pictureHeight">Рамзер ангара - высота</param>
         public Hangar(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
@@ -52,12 +52,12 @@ namespace WindowsFormsAirs
         }
         /// <summary>
         /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется самолет
+        /// Логика действия: в ангар добавляется самолет
         /// </summary>
-        /// <param name="p">Парковка</param>
-        /// <param name="car">Добавляемый самолет</param>
+        /// <param name="p">Ангар</param>
+        /// <param name="air">Добавляемый самолет</param>
         /// <returns></returns>
-        public static int operator +(Hangar<T> p, T car)
+        public static int operator +(Hangar<T> p, T air)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -67,7 +67,7 @@ namespace WindowsFormsAirs
             {
                 if (p.CheckFreePlace(i))
                 {
-                    p._places.Add(i, car);
+                    p._places.Add(i, air);
                     p._places[i].SetPosition(5 + i / 5 * p._placeSizeWidth + 5,
                      i % 5 * p._placeSizeHeight + 40, p.PictureWidth,
                     p.PictureHeight);
@@ -78,18 +78,18 @@ namespace WindowsFormsAirs
         }
         /// <summary>
         /// Перегрузка оператора вычитания
-        /// Логика действия: с парковки забираем самолет
+        /// Логика действия: из ангара забираем самолет
         /// </summary>
-        /// <param name="p">Парковка</param>
+        /// <param name="p">Ангар</param>
         /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
         /// <returns></returns>
         public static T operator -(Hangar<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {
-                T car = p._places[index];
+                T air = p._places[index];
                 p._places.Remove(index);
-                return car;
+                return air;
             }
             return null;
         }
@@ -103,7 +103,7 @@ namespace WindowsFormsAirs
             return !_places.ContainsKey(index);
         }
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки ангара
         /// </summary>
         /// <param name="g"></param>
         public void Draw(Graphics g)
@@ -122,7 +122,7 @@ namespace WindowsFormsAirs
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            //границы праковки
+            //границы ангара
             g.DrawRectangle(pen, 0, 0, (_maxCount / 5) * _placeSizeWidth, 400);
             for (int i = 0; i < _maxCount / 5; i++)
             {//отрисовываем, по 5 мест на линии

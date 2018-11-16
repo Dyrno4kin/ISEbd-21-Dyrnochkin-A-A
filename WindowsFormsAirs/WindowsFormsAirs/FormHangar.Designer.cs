@@ -131,7 +131,6 @@ namespace WindowsFormsAirs
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
