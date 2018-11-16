@@ -32,13 +32,12 @@ namespace WindowsFormsAirs
         {
             this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
             this.pictureBoxTakeAir = new System.Windows.Forms.PictureBox();
-            this.buttonSetAir = new System.Windows.Forms.Button();
-            this.buttonSetAirBus = new System.Windows.Forms.Button();
             this.labelTakeAir = new System.Windows.Forms.Label();
             this.labelNumberMesto = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.TextBox();
             this.buttonTakeAir = new System.Windows.Forms.Button();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
+            this.buttonSetAir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
             this.SuspendLayout();
@@ -60,26 +59,6 @@ namespace WindowsFormsAirs
             this.pictureBoxTakeAir.Size = new System.Drawing.Size(179, 140);
             this.pictureBoxTakeAir.TabIndex = 1;
             this.pictureBoxTakeAir.TabStop = false;
-            // 
-            // buttonSetAir
-            // 
-            this.buttonSetAir.Location = new System.Drawing.Point(423, 12);
-            this.buttonSetAir.Name = "buttonSetAir";
-            this.buttonSetAir.Size = new System.Drawing.Size(179, 30);
-            this.buttonSetAir.TabIndex = 2;
-            this.buttonSetAir.Text = "Припарковать Air";
-            this.buttonSetAir.UseVisualStyleBackColor = true;
-            this.buttonSetAir.Click += new System.EventHandler(this.buttonSetAir_Click);
-            // 
-            // buttonSetAirBus
-            // 
-            this.buttonSetAirBus.Location = new System.Drawing.Point(423, 48);
-            this.buttonSetAirBus.Name = "buttonSetAirBus";
-            this.buttonSetAirBus.Size = new System.Drawing.Size(179, 30);
-            this.buttonSetAirBus.TabIndex = 3;
-            this.buttonSetAirBus.Text = "Припарковать AirBus";
-            this.buttonSetAirBus.UseVisualStyleBackColor = true;
-            this.buttonSetAirBus.Click += new System.EventHandler(this.buttonSetAirBus_Click);
             // 
             // labelTakeAir
             // 
@@ -115,27 +94,36 @@ namespace WindowsFormsAirs
             this.buttonTakeAir.Text = "Забрать";
             this.buttonTakeAir.UseVisualStyleBackColor = true;
             this.buttonTakeAir.Click += new System.EventHandler(this.buttonTakeAir_Click);
-            //
+            // 
             // listBoxLevels
             // 
             this.listBoxLevels.FormattingEnabled = true;
             this.listBoxLevels.ItemHeight = 16;
-            this.listBoxLevels.Location = new System.Drawing.Point(423, 85);
+            this.listBoxLevels.Location = new System.Drawing.Point(426, 12);
             this.listBoxLevels.Name = "listBoxLevels";
             this.listBoxLevels.Size = new System.Drawing.Size(176, 116);
             this.listBoxLevels.TabIndex = 8;
             this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
+            // buttonSetAir
+            // 
+            this.buttonSetAir.Location = new System.Drawing.Point(428, 152);
+            this.buttonSetAir.Name = "buttonSetAir";
+            this.buttonSetAir.Size = new System.Drawing.Size(173, 47);
+            this.buttonSetAir.TabIndex = 9;
+            this.buttonSetAir.Text = "Добавить самолет";
+            this.buttonSetAir.UseVisualStyleBackColor = true;
+            this.buttonSetAir.Click += new System.EventHandler(this.ButtonSetAir_Click);
+            // 
             // FormHangar
             // 
             this.ClientSize = new System.Drawing.Size(611, 424);
+            this.Controls.Add(this.buttonSetAir);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.buttonTakeAir);
             this.Controls.Add(this.maskedTextBox);
             this.Controls.Add(this.labelNumberMesto);
             this.Controls.Add(this.labelTakeAir);
-            this.Controls.Add(this.buttonSetAirBus);
-            this.Controls.Add(this.buttonSetAir);
             this.Controls.Add(this.pictureBoxTakeAir);
             this.Controls.Add(this.pictureBoxHangar);
             this.Name = "FormHangar";
@@ -143,18 +131,16 @@ namespace WindowsFormsAirs
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
         private PictureBox pictureBoxHangar;
         private PictureBox pictureBoxTakeAir;
-        private Button buttonSetAir;
-        private Button buttonSetAirBus;
         private Label labelTakeAir;
         private Label labelNumberMesto;
         private TextBox maskedTextBox;
         private Button buttonTakeAir;
         private ListBox listBoxLevels;
+        private Button buttonSetAir;
     }
 }

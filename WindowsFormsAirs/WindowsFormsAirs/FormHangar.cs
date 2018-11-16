@@ -16,6 +16,11 @@ namespace WindowsFormsAirs
         /// Объект от класса многоуровнего ангара
         /// </summary>
         MultiLevelHangar hangar;
+
+        /// <summary>
+        /// Форма для добавления
+        /// </summary>
+        FormAirConfig form;
         /// <summary>
         /// Количество уровней
         /// </summary>
@@ -45,58 +50,7 @@ namespace WindowsFormsAirs
                 pictureBoxHangar.Image = bmp;
             }
         }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать самолет"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetAir_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var air = new Air(100, 1000, dialog.Color);
-                    int place = hangar[listBoxLevels.SelectedIndex] + air;
-                    if (place == -1)
-                    {
-                        MessageBox.Show("Нет свободных мест", "Ошибка",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    Draw();
-                }
-            }
-        }
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать аэробус"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonSetAirBus_Click(object sender, EventArgs e)
-        {
-            if (listBoxLevels.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var air = new AirBus(100, 1000, dialog.Color, dialogDop.Color,
-                       true);
-                        int place = hangar[listBoxLevels.SelectedIndex] + air;
-                        if (place == -1)
-                        {
-                            MessageBox.Show("Нет свободных мест", "Ошибка",
-                           MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Draw();
-                    }
-                }
-            }
-        }
+        
         /// <summary>
         /// Обработка нажатия кнопки "Забрать"
         /// </summary>
@@ -138,6 +92,37 @@ namespace WindowsFormsAirs
         private void listBoxLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             Draw();
+        }
+        /// <summary>
+        /// Обработка нажатия кнопки "Добавить самолет"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonSetAir_Click(object sender, EventArgs e)
+        {
+            form = new FormAirConfig();
+            form.AddEvent(AddAir);
+            form.Show();
+        }
+
+        /// <summary>
+        /// Метод добавления самолета
+        /// </summary>
+        /// <param name="air"></param>
+        private void AddAir(IAir air)
+        {
+            if (air != null && listBoxLevels.SelectedIndex > -1)
+            {
+                int place = hangar[listBoxLevels.SelectedIndex] + air;
+                if (place > -1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Самолет не удалось поставить");
+                }
+            }
         }
     }
 }
