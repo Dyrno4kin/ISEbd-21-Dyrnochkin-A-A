@@ -28,25 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCreateAir = new System.Windows.Forms.Button();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.pictureBoxAir = new System.Windows.Forms.PictureBox();
+            this.buttonAddAir = new System.Windows.Forms.Button();
+            this.buttonAddAirBus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonCreateAir
-            // 
-            this.buttonCreateAir.Location = new System.Drawing.Point(16, 15);
-            this.buttonCreateAir.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonCreateAir.Name = "buttonCreateAir";
-            this.buttonCreateAir.Size = new System.Drawing.Size(100, 28);
-            this.buttonCreateAir.TabIndex = 1;
-            this.buttonCreateAir.Text = "Cоздать";
-            this.buttonCreateAir.UseVisualStyleBackColor = true;
-            this.buttonCreateAir.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonDown
             // 
@@ -115,16 +105,37 @@
             this.pictureBoxAir.TabIndex = 0;
             this.pictureBoxAir.TabStop = false;
             // 
+            // buttonAddAir
+            // 
+            this.buttonAddAir.Location = new System.Drawing.Point(12, 12);
+            this.buttonAddAir.Name = "buttonAddAir";
+            this.buttonAddAir.Size = new System.Drawing.Size(126, 28);
+            this.buttonAddAir.TabIndex = 6;
+            this.buttonAddAir.Text = "Самолет";
+            this.buttonAddAir.UseVisualStyleBackColor = true;
+            this.buttonAddAir.Click += new System.EventHandler(this.buttonAddAir_Click);
+            // 
+            // buttonAddAirBus
+            // 
+            this.buttonAddAirBus.Location = new System.Drawing.Point(162, 12);
+            this.buttonAddAirBus.Name = "buttonAddAirBus";
+            this.buttonAddAirBus.Size = new System.Drawing.Size(126, 28);
+            this.buttonAddAirBus.TabIndex = 7;
+            this.buttonAddAirBus.Text = "Аэробус";
+            this.buttonAddAirBus.UseVisualStyleBackColor = true;
+            this.buttonAddAirBus.Click += new System.EventHandler(this.buttonAddAirBus_Click);
+            // 
             // FormAir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 704);
+            this.Controls.Add(this.buttonAddAirBus);
+            this.Controls.Add(this.buttonAddAir);
             this.Controls.Add(this.buttonLeft);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonUp);
             this.Controls.Add(this.buttonDown);
-            this.Controls.Add(this.buttonCreateAir);
             this.Controls.Add(this.pictureBoxAir);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAir";
@@ -132,17 +143,17 @@
             this.Text = "FormAir";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxAir;
-        private System.Windows.Forms.Button buttonCreateAir;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonAddAir;
+        private System.Windows.Forms.Button buttonAddAirBus;
     }
 }
 
