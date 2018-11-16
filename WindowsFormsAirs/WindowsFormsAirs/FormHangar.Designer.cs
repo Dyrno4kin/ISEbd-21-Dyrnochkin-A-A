@@ -115,7 +115,7 @@ namespace WindowsFormsAirs
             this.buttonTakeAir.Text = "Забрать";
             this.buttonTakeAir.UseVisualStyleBackColor = true;
             this.buttonTakeAir.Click += new System.EventHandler(this.buttonTakeAir_Click);
-            // 
+            //
             // listBoxLevels
             // 
             this.listBoxLevels.FormattingEnabled = true;
