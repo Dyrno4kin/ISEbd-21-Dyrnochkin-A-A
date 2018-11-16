@@ -62,6 +62,7 @@
       <DependentUpon>FormHangar.cs</DependentUpon>
     </Compile>
     <Compile Include="IAir.cs" />
+    <Compile Include="MultiLevelHangar.cs" />
     <Compile Include="Hangar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

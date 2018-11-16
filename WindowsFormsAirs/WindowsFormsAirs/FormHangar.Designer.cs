@@ -38,6 +38,7 @@ namespace WindowsFormsAirs
             this.labelNumberMesto = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.TextBox();
             this.buttonTakeAir = new System.Windows.Forms.Button();
+            this.listBoxLevels = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
             this.SuspendLayout();
@@ -114,10 +115,21 @@ namespace WindowsFormsAirs
             this.buttonTakeAir.Text = "Забрать";
             this.buttonTakeAir.UseVisualStyleBackColor = true;
             this.buttonTakeAir.Click += new System.EventHandler(this.buttonTakeAir_Click);
+            //
+            // listBoxLevels
+            // 
+            this.listBoxLevels.FormattingEnabled = true;
+            this.listBoxLevels.ItemHeight = 16;
+            this.listBoxLevels.Location = new System.Drawing.Point(423, 85);
+            this.listBoxLevels.Name = "listBoxLevels";
+            this.listBoxLevels.Size = new System.Drawing.Size(176, 116);
+            this.listBoxLevels.TabIndex = 8;
+            this.listBoxLevels.SelectedIndexChanged += new System.EventHandler(this.listBoxLevels_SelectedIndexChanged);
             // 
             // FormHangar
             // 
             this.ClientSize = new System.Drawing.Size(611, 424);
+            this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.buttonTakeAir);
             this.Controls.Add(this.maskedTextBox);
             this.Controls.Add(this.labelNumberMesto);
@@ -143,5 +155,6 @@ namespace WindowsFormsAirs
         private Label labelNumberMesto;
         private TextBox maskedTextBox;
         private Button buttonTakeAir;
+        private ListBox listBoxLevels;
     }
 }
