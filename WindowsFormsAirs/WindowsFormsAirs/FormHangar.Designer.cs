@@ -2,7 +2,7 @@
 
 namespace WindowsFormsAirs
 {
-    partial class FormParking
+    partial class FormHangar
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace WindowsFormsAirs
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxParking = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAir = new System.Windows.Forms.PictureBox();
             this.pictureBoxTakeAir = new System.Windows.Forms.PictureBox();
             this.labelTakeAir = new System.Windows.Forms.Label();
             this.labelNumberMesto = new System.Windows.Forms.Label();
@@ -38,18 +38,18 @@ namespace WindowsFormsAirs
             this.buttonTakeAir = new System.Windows.Forms.Button();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.buttonSetAir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBoxParking
+            // pictureBoxAir
             // 
-            this.pictureBoxParking.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.pictureBoxParking.Location = new System.Drawing.Point(11, 12);
-            this.pictureBoxParking.Name = "pictureBoxParking";
-            this.pictureBoxParking.Size = new System.Drawing.Size(403, 403);
-            this.pictureBoxParking.TabIndex = 0;
-            this.pictureBoxParking.TabStop = false;
+            this.pictureBoxAir.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.pictureBoxAir.Location = new System.Drawing.Point(11, 12);
+            this.pictureBoxAir.Name = "pictureBoxAir";
+            this.pictureBoxAir.Size = new System.Drawing.Size(403, 403);
+            this.pictureBoxAir.TabIndex = 0;
+            this.pictureBoxAir.TabStop = false;
             // 
             // pictureBoxTakeAir
             // 
@@ -125,9 +125,9 @@ namespace WindowsFormsAirs
             this.Controls.Add(this.labelNumberMesto);
             this.Controls.Add(this.labelTakeAir);
             this.Controls.Add(this.pictureBoxTakeAir);
-            this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.pictureBoxAir);
             this.Name = "FormParking";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,7 +135,7 @@ namespace WindowsFormsAirs
         }
 
         #endregion
-        private PictureBox pictureBoxParking;
+        private PictureBox pictureBoxAir;
         private PictureBox pictureBoxTakeAir;
         private Label labelTakeAir;
         private Label labelNumberMesto;

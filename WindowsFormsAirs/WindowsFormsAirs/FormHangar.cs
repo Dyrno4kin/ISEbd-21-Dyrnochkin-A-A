@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAirs
 {
-    public partial class FormParking : Form
+    public partial class FormHangar : Form
     {
         /// <summary>
         /// Объект от класса многоуровневой парковки
         /// </summary>
-        MultiLevelParking parking;
+        MultiLevelHangar parking;
 
         /// <summary>
         /// Форма для добавления
@@ -25,11 +25,11 @@ namespace WindowsFormsAirs
         /// Количество уровней-парковок
         /// </summary>
         private const int countLevel = 5;
-        public FormParking()
+        public FormHangar()
         {
             InitializeComponent();
-            parking = new MultiLevelParking(countLevel, pictureBoxParking.Width,
-           pictureBoxParking.Height);
+            parking = new MultiLevelHangar(countLevel, pictureBoxAir.Width,
+           pictureBoxAir.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
             {
@@ -44,10 +44,10 @@ namespace WindowsFormsAirs
         {
             if (listBoxLevels.SelectedIndex > -1)
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
-                Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+                Bitmap bmp = new Bitmap(pictureBoxAir.Width, pictureBoxAir.Height);
                 Graphics gr = Graphics.FromImage(bmp);
                 parking[listBoxLevels.SelectedIndex].Draw(gr);
-                pictureBoxParking.Image = bmp;
+                pictureBoxAir.Image = bmp;
             }
         }
         

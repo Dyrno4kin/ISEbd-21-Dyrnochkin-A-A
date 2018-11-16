@@ -11,7 +11,7 @@ namespace WindowsFormsAirs
     /// Параметризованны класс для хранения набора объектов от интерфейса IAir
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, IAir
+    public class Hangar<T> where T : class, IAir
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -43,7 +43,7 @@ namespace WindowsFormsAirs
         /// <param name="sizes">Количество мест на парковке</param>
         /// <param name="pictureWidth">Рамзер парковки - ширина</param>
         /// <param name="pictureHeight">Рамзер парковки - высота</param>
-        public Parking(int sizes, int pictureWidth, int pictureHeight)
+        public Hangar(int sizes, int pictureWidth, int pictureHeight)
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
@@ -57,7 +57,7 @@ namespace WindowsFormsAirs
         /// <param name="p">Парковка</param>
         /// <param name="car">Добавляемый самолет</param>
         /// <returns></returns>
-        public static int operator +(Parking<T> p, T car)
+        public static int operator +(Hangar<T> p, T car)
         {
             if (p._places.Count == p._maxCount)
             {
@@ -83,7 +83,7 @@ namespace WindowsFormsAirs
         /// <param name="p">Парковка</param>
         /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
         /// <returns></returns>
-        public static T operator -(Parking<T> p, int index)
+        public static T operator -(Hangar<T> p, int index)
         {
             if (!p.CheckFreePlace(index))
             {

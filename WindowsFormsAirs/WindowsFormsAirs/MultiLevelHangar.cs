@@ -9,12 +9,12 @@ namespace WindowsFormsAirs
     /// <summary>
     /// Класс-хранидище парковок
     /// </summary>
-    public class MultiLevelParking
+    public class MultiLevelHangar
     {
         /// <summary>
         /// Список с уровнями парковки
         /// </summary>
-        List<Parking<IAir>> parkingStages;
+        List<Hangar<IAir>> hangarStages;
         /// <summary>
         /// Сколько мест на каждом уровне
         /// </summary>
@@ -25,12 +25,12 @@ namespace WindowsFormsAirs
         /// <param name="countStages">Количество уровенй парковки</param>
         /// <param name="pictureWidth"></param>
         /// <param name="pictureHeight"></param>
-        public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
+        public MultiLevelHangar(int countStages, int pictureWidth, int pictureHeight)
         {
-            parkingStages = new List<Parking<IAir>>();
+            parkingStages = new List<Hangar<IAir>>();
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<IAir>(countPlaces, pictureWidth,
+                parkingStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
                pictureHeight));
             }
         }
@@ -39,7 +39,7 @@ namespace WindowsFormsAirs
         /// </summary>
         /// <param name="ind"></param>
         /// <returns></returns>
-        public Parking<IAir> this[int ind]
+        public Hangar<IAir> this[int ind]
         {
             get
             {
