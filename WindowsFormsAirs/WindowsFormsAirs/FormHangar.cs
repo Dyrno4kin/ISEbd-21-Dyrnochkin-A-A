@@ -10,28 +10,28 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAirs
 {
-    public partial class FormParking : Form
+    public partial class FormHangar : Form
     {
         /// <summary>
-        /// Объект от класса-парковки
+        /// Объект от класса-ангара
         /// </summary>
-        Parking<IAir> parking;
-        public FormParking()
+        Hangar<IAir> parking;
+        public FormHangar()
         {
             InitializeComponent();
-            parking = new Parking<IAir>(10, pictureBoxParking.Width,
-           pictureBoxParking.Height);
+            parking = new Hangar<IAir>(10, pictureBoxHangar.Width,
+           pictureBoxHangar.Height);
             Draw();
         }
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки ангара
         /// </summary>
         private void Draw()
         {
-            Bitmap bmp = new Bitmap(pictureBoxParking.Width, pictureBoxParking.Height);
+            Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
             Graphics gr = Graphics.FromImage(bmp);
             parking.Draw(gr);
-            pictureBoxParking.Image = bmp;
+            pictureBoxHangar.Image = bmp;
         }
         /// <summary>
         /// Обработка нажатия кнопки "Припарковать самолет"

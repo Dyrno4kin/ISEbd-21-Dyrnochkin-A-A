@@ -11,7 +11,7 @@ namespace WindowsFormsAirs
     /// Параметризованны класс для хранения набора объектов от интерфейса IAir
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Parking<T> where T : class, IAir
+    public class Hangar<T> where T : class, IAir
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -36,10 +36,10 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="sizes">Количество мест на парковке</param>
-        /// <param name="pictureWidth">Рамзер парковки - ширина</param>
-        /// <param name="pictureHeight">Рамзер парковки - высота</param>
-        public Parking(int sizes, int pictureWidth, int pictureHeight)
+        /// <param name="sizes">Количество мест в ангаре</param>
+        /// <param name="pictureWidth">Рамзер ангара - ширина</param>
+        /// <param name="pictureHeight">Рамзер ангара - высота</param>
+        public Hangar(int sizes, int pictureWidth, int pictureHeight)
         {
             _places = new T[sizes];
             PictureWidth = pictureWidth;
@@ -51,12 +51,12 @@ namespace WindowsFormsAirs
         }
         /// <summary>
         /// Перегрузка оператора сложения
-        /// Логика действия: на парковку добавляется самолет
+        /// Логика действия: в ангар добавляется самолет
         /// </summary>
-        /// <param name="p">Парковка</param>
+        /// <param name="p">Ангар</param>
         /// <param name="air">Добавляемый самолет</param>
         /// <returns></returns>
-        public static int operator +(Parking<T> p, T air)
+        public static int operator +(Hangar<T> p, T air)
         {
             for (int i = 0; i < p._places.Length; i++)
             {
@@ -73,12 +73,12 @@ namespace WindowsFormsAirs
         }
         /// <summary>
         /// Перегрузка оператора вычитания
-        /// Логика действия: с парковки забираем самолет
+        /// Логика действия: из ангара забираем самолет
         /// </summary>
-        /// <param name="p">Парковка</param>
+        /// <param name="p">Ангар</param>
         /// <param name="index">Индекс места, с которого пытаемся извлечь объект</param>
         /// <returns></returns>
-        public static T operator -(Parking<T> p, int index)
+        public static T operator -(Hangar<T> p, int index)
         {
             if (index < 0 || index > p._places.Length)
             {
@@ -102,7 +102,7 @@ namespace WindowsFormsAirs
             return _places[index] == null;
         }
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки Ангара
         /// </summary>
         /// <param name="g"></param>
         public void Draw(Graphics g)
@@ -123,7 +123,7 @@ namespace WindowsFormsAirs
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
-            //границы праковки
+            //границы Ангара
             g.DrawRectangle(pen, 0, 0, (_places.Length / 5) * _placeSizeWidth, 400);
             for (int i = 0; i < _places.Length / 5; i++)
             {//отрисовываем, по 5 мест на линии
