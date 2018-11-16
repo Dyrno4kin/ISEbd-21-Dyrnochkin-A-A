@@ -15,11 +15,11 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Объект от класса-ангара
         /// </summary>
-        Hangar<IAir> parking;
+        Hangar<IAir> hangar;
         public FormHangar()
         {
             InitializeComponent();
-            parking = new Hangar<IAir>(10, pictureBoxHangar.Width,
+            hangar = new Hangar<IAir>(10, pictureBoxHangar.Width,
            pictureBoxHangar.Height);
             Draw();
         }
@@ -30,7 +30,7 @@ namespace WindowsFormsAirs
         {
             Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
             Graphics gr = Graphics.FromImage(bmp);
-            parking.Draw(gr);
+            hangar.Draw(gr);
             pictureBoxHangar.Image = bmp;
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace WindowsFormsAirs
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var air = new Air(100, 1000, dialog.Color);
-                int place = parking + air;
+                int place = hangar + air;
                 Draw();
             }
         }
@@ -63,7 +63,7 @@ namespace WindowsFormsAirs
                 {
                     var air = new AirBus(100, 1000, dialog.Color, dialogDop.Color,
                    true);
-                    int place = parking + air;
+                    int place = hangar + air;
                     Draw();
                 }
             }
@@ -77,7 +77,7 @@ namespace WindowsFormsAirs
         {
             if (maskedTextBox.Text != "")
             {
-                var air = parking - Convert.ToInt32(maskedTextBox.Text);
+                var air = hangar - Convert.ToInt32(maskedTextBox.Text);
                 if (air != null)
                 {
                     Bitmap bmp = new Bitmap(pictureBoxTakeAir.Width,
