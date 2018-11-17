@@ -65,7 +65,10 @@ namespace WindowsFormsAirs
         {
             DopColor = color;
         }
-
+        /// <summary>
+        /// Возвращаем строку
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString() + ";" + DopColor.Name + ";" + Bus;

@@ -43,7 +43,8 @@ namespace WindowsFormsAirs
                 Weight = Convert.ToInt32(strs[1]);
                 MainColor = Color.FromName(strs[2]);
             }
-        }
+        }
+
         /// <summary>
         /// Изменение направления пермещения
         /// </summary>
@@ -107,7 +108,10 @@ namespace WindowsFormsAirs
             Brush window = new SolidBrush(Color.LightBlue);
             g.FillEllipse(window, _startPosX + 120, _startPosY + 9, 12, 6);
         }
-
+        /// <summary>
+        /// Возвращаем строку
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;

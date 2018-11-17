@@ -20,7 +20,6 @@ namespace WindowsFormsAirs
         /// Сколько мест на каждом уровне
         /// </summary>
         private const int countPlaces = 10;
-
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -28,7 +27,7 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Высота окна отрисовки
         /// </summary>
-        private int pictureHeight;
+        private int pictureHeight;
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -39,7 +38,7 @@ namespace WindowsFormsAirs
         {
             hangarStages = new List<Hangar<IAir>>();
             this.pictureWidth = pictureWidth;
-            this.pictureHeight = pictureHeight;
+            this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
                 hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
@@ -187,6 +186,6 @@ namespace WindowsFormsAirs
                 hangarStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = air;
             }
             return true;
-        }
+        }
     }
 }
