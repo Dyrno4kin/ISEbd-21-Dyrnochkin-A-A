@@ -15,7 +15,7 @@ namespace WindowsFormsAirs
         /// <summary>
         /// Список с уровнями парковки
         /// </summary>
-        List<Parking<IAir>> parkingStages;
+        List<Hangar<IAir>> hangarStages;
 
         /// <summary>
         /// Ширина окна отрисовки
@@ -38,12 +38,12 @@ namespace WindowsFormsAirs
         /// <param name="pictureHeight"></param>
         public MultiLevelHangar(int countStages, int pictureWidth, int pictureHeight)
         {
-            parkingStages = new List<Parking<IAir>>();
+            hangarStages = new List<Hangar<IAir>>();
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<IAir>(countPlaces, pictureWidth, pictureHeight));
+                hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth, pictureHeight));
             }
         }
         /// <summary>
@@ -51,20 +51,20 @@ namespace WindowsFormsAirs
         /// </summary>
         /// <param name="ind"></param>
         /// <returns></returns>
-        public Parking<IAir> this[int ind]
+        public Hangar<IAir> this[int ind]
         {
             get
             {
-                if (ind > -1 && ind < parkingStages.Count)
+                if (ind > -1 && ind < hangarStages.Count)
                 {
-                    return parkingStages[ind];
+                    return hangarStages[ind];
                 }
                 return null;
             }
         }
 
         /// <summary>
-        /// Сохранение информации по автомобилям в ангаре в файл
+        /// Сохранение информации по самолетам в ангаре в файл
         /// </summary>
         /// <param name="filename">Путь и имя файла</param>
         /// <returns></returns>
@@ -79,9 +79,9 @@ namespace WindowsFormsAirs
                 using (BufferedStream bs = new BufferedStream(fs))
                 {
                     //Записываем количество уровней
-                    WriteToFile("CountLeveles:" + parkingStages.Count +
+                    WriteToFile("CountLeveles:" + hangarStages.Count +
                    Environment.NewLine, fs);
-                    foreach (var level in parkingStages)
+                    foreach (var level in hangarStages)
                     {
                         //Начинаем уровень
                         WriteToFile("Level" + Environment.NewLine, fs);
@@ -149,11 +149,11 @@ namespace WindowsFormsAirs
             {
                 //считываем количество уровней
                 int count = Convert.ToInt32(strs[0].Split(':')[1]);
-                if (parkingStages != null)
+                if (hangarStages != null)
                 {
-                    parkingStages.Clear();
+                    hangarStages.Clear();
                 }
-                parkingStages = new List<Parking<IAir>>(count);
+                hangarStages = new List<Hangar<IAir>>(count);
             }
             else
             {
@@ -169,7 +169,7 @@ namespace WindowsFormsAirs
                 {
                     //начинаем новый уровень
                     counter++;
-                    parkingStages.Add(new Parking<IAir>(countPlaces, pictureWidth,
+                    hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth,
                     pictureHeight));
                     continue;
                 }
@@ -185,9 +185,10 @@ namespace WindowsFormsAirs
                 {
                     air = new AirBus(strs[i].Split(':')[2]);
                 }
-                parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = air;
+                hangarStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = air;
             }
             return true;
-        }
+        }
+
     }
 }

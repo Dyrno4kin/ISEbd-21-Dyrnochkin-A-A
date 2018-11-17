@@ -13,9 +13,9 @@ namespace WindowsFormsAirs
     public partial class FormHangar : Form
     {
         /// <summary>
-        /// Объект от класса многоуровневой парковки
+        /// Объект от класса многоуровнево
         /// </summary>
-        MultiLevelHangar parking;
+        MultiLevelHangar hangar;
 
         /// <summary>
         /// Форма для добавления
@@ -28,7 +28,7 @@ namespace WindowsFormsAirs
         public FormHangar()
         {
             InitializeComponent();
-            parking = new MultiLevelHangar(countLevel, pictureBoxHangar.Width,
+            hangar = new MultiLevelHangar(countLevel, pictureBoxHangar.Width,
            pictureBoxHangar.Height);
             //заполнение listBox
             for (int i = 0; i < countLevel; i++)
@@ -38,7 +38,7 @@ namespace WindowsFormsAirs
             listBoxLevels.SelectedIndex = 0;
         }
         /// <summary>
-        /// Метод отрисовки парковки
+        /// Метод отрисовки ангара
         /// </summary>
         private void Draw()
         {
@@ -46,7 +46,7 @@ namespace WindowsFormsAirs
             {//если выбран один из пуктов в listBox (при старте программы ни один пункт не будет выбран и может возникнуть ошибка, если мы попытаемся обратиться к элементу listBox)
                 Bitmap bmp = new Bitmap(pictureBoxHangar.Width, pictureBoxHangar.Height);
                 Graphics gr = Graphics.FromImage(bmp);
-                parking[listBoxLevels.SelectedIndex].Draw(gr);
+                hangar[listBoxLevels.SelectedIndex].Draw(gr);
                 pictureBoxHangar.Image = bmp;
             }
         }
@@ -62,7 +62,7 @@ namespace WindowsFormsAirs
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var air = parking[listBoxLevels.SelectedIndex] -
+                    var air = hangar[listBoxLevels.SelectedIndex] -
                    Convert.ToInt32(maskedTextBox.Text);
                     if (air != null)
                     {
@@ -113,14 +113,14 @@ namespace WindowsFormsAirs
         {
             if (air != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = parking[listBoxLevels.SelectedIndex] + air;
+                int place = hangar[listBoxLevels.SelectedIndex] + air;
                 if (place > -1)
                 {
                     Draw();
                 }
                 else
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show("Самолет не удалось поставить");
                 }
             }
         }
@@ -134,7 +134,7 @@ namespace WindowsFormsAirs
         {
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.SaveData(saveFileDialog.FileName))
+                if (hangar.SaveData(saveFileDialog.FileName))
                 {
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
                    MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,7 +156,7 @@ namespace WindowsFormsAirs
         {
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (parking.LoadData(openFileDialog.FileName))
+                if (hangar.LoadData(openFileDialog.FileName))
                 {
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
@@ -167,7 +167,8 @@ namespace WindowsFormsAirs
                    MessageBoxIcon.Error);
                 }
                 Draw();
-            }
+            }
+
         }
     }
 }
