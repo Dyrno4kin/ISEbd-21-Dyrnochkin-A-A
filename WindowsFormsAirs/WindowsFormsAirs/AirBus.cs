@@ -28,6 +28,18 @@ namespace WindowsFormsAirs
             DopColor = dopColor;
             Bus = bus;
         }
+        public AirBus(string info) : base(info)
+        {
+            string[] strs = info.Split(';');
+            if (strs.Length == 5)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                Bus = Convert.ToBoolean(strs[4]);
+            }
+        }
         public override void DrawAir(Graphics g)
         {
             base.DrawAir(g);
@@ -50,6 +62,14 @@ namespace WindowsFormsAirs
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+        /// <summary>
+        /// Возвращаем строку
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + Bus;
         }
     }
 }
