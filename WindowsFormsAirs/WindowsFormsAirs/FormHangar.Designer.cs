@@ -38,14 +38,21 @@ namespace WindowsFormsAirs
             this.buttonTakeAir = new System.Windows.Forms.Button();
             this.listBoxLevels = new System.Windows.Forms.ListBox();
             this.buttonSetAir = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxHangar
             // 
             this.pictureBoxHangar.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.pictureBoxHangar.Location = new System.Drawing.Point(11, 12);
+            this.pictureBoxHangar.Location = new System.Drawing.Point(12, 23);
             this.pictureBoxHangar.Name = "pictureBoxHangar";
             this.pictureBoxHangar.Size = new System.Drawing.Size(403, 403);
             this.pictureBoxHangar.TabIndex = 0;
@@ -54,7 +61,7 @@ namespace WindowsFormsAirs
             // pictureBoxTakeAir
             // 
             this.pictureBoxTakeAir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxTakeAir.Location = new System.Drawing.Point(423, 241);
+            this.pictureBoxTakeAir.Location = new System.Drawing.Point(423, 252);
             this.pictureBoxTakeAir.Name = "pictureBoxTakeAir";
             this.pictureBoxTakeAir.Size = new System.Drawing.Size(179, 140);
             this.pictureBoxTakeAir.TabIndex = 1;
@@ -63,7 +70,7 @@ namespace WindowsFormsAirs
             // labelTakeAir
             // 
             this.labelTakeAir.AutoSize = true;
-            this.labelTakeAir.Location = new System.Drawing.Point(461, 199);
+            this.labelTakeAir.Location = new System.Drawing.Point(461, 204);
             this.labelTakeAir.Name = "labelTakeAir";
             this.labelTakeAir.Size = new System.Drawing.Size(122, 17);
             this.labelTakeAir.TabIndex = 4;
@@ -72,7 +79,7 @@ namespace WindowsFormsAirs
             // labelNumberMesto
             // 
             this.labelNumberMesto.AutoSize = true;
-            this.labelNumberMesto.Location = new System.Drawing.Point(447, 218);
+            this.labelNumberMesto.Location = new System.Drawing.Point(451, 227);
             this.labelNumberMesto.Name = "labelNumberMesto";
             this.labelNumberMesto.Size = new System.Drawing.Size(53, 17);
             this.labelNumberMesto.TabIndex = 5;
@@ -80,14 +87,14 @@ namespace WindowsFormsAirs
             // 
             // maskedTextBox
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(513, 215);
+            this.maskedTextBox.Location = new System.Drawing.Point(510, 224);
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(73, 22);
             this.maskedTextBox.TabIndex = 6;
             // 
             // buttonTakeAir
             // 
-            this.buttonTakeAir.Location = new System.Drawing.Point(423, 387);
+            this.buttonTakeAir.Location = new System.Drawing.Point(420, 398);
             this.buttonTakeAir.Name = "buttonTakeAir";
             this.buttonTakeAir.Size = new System.Drawing.Size(179, 28);
             this.buttonTakeAir.TabIndex = 7;
@@ -99,7 +106,7 @@ namespace WindowsFormsAirs
             // 
             this.listBoxLevels.FormattingEnabled = true;
             this.listBoxLevels.ItemHeight = 16;
-            this.listBoxLevels.Location = new System.Drawing.Point(426, 12);
+            this.listBoxLevels.Location = new System.Drawing.Point(423, 23);
             this.listBoxLevels.Name = "listBoxLevels";
             this.listBoxLevels.Size = new System.Drawing.Size(176, 116);
             this.listBoxLevels.TabIndex = 8;
@@ -115,9 +122,52 @@ namespace WindowsFormsAirs
             this.buttonSetAir.UseVisualStyleBackColor = true;
             this.buttonSetAir.Click += new System.EventHandler(this.ButtonSetAir_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(611, 28);
+            this.menuStrip.TabIndex = 11;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormHangar
             // 
-            this.ClientSize = new System.Drawing.Size(611, 424);
+            this.ClientSize = new System.Drawing.Size(611, 438);
             this.Controls.Add(this.buttonSetAir);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.buttonTakeAir);
@@ -126,11 +176,15 @@ namespace WindowsFormsAirs
             this.Controls.Add(this.labelTakeAir);
             this.Controls.Add(this.pictureBoxTakeAir);
             this.Controls.Add(this.pictureBoxHangar);
+            this.Controls.Add(this.menuStrip);
             this.Name = "FormHangar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).EndInit();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -142,5 +196,11 @@ namespace WindowsFormsAirs
         private Button buttonTakeAir;
         private ListBox listBoxLevels;
         private Button buttonSetAir;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem файлToolStripMenuItem;
+        private ToolStripMenuItem сохранитьToolStripMenuItem;
+        private ToolStripMenuItem загрузитьToolStripMenuItem;
+        private SaveFileDialog saveFileDialog;
+        private OpenFileDialog openFileDialog;
     }
 }
