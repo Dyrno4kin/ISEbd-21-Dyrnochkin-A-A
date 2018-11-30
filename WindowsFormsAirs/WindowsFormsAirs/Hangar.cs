@@ -61,7 +61,7 @@ namespace WindowsFormsAirs
         {
             if (p._places.Count == p._maxCount)
             {
-                return -1;
+                throw new HangarOverflowException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -91,7 +91,7 @@ namespace WindowsFormsAirs
                 p._places.Remove(index);
                 return air;
             }
-            return null;
+            throw new HangarNotFoundException(index);
         }
         /// <summary>
         /// Метод проверки заполнености парковочного места (ячейки массива)
@@ -147,7 +147,7 @@ namespace WindowsFormsAirs
                 {
                     return _places[ind];
                 }
-                return null;
+                throw new HangarNotFoundException(ind);
             }
             set
             {
@@ -156,6 +156,10 @@ namespace WindowsFormsAirs
                     _places.Add(ind, value);
                     _places[ind].SetPosition(5 + ind / 5 * _placeSizeWidth + 5, ind % 5 *
                     _placeSizeHeight + 40, PictureWidth, PictureHeight);
+                }
+                else
+                {
+                    throw new HangarOccupiedPlaceException(ind);
                 }
             }
         }
