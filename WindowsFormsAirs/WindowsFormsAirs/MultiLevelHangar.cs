@@ -101,7 +101,6 @@ namespace WindowsFormsAirs
                                 WriteToFile(air + Environment.NewLine, fs);
                             }
                             catch (Exception ex) { }
-                            finally { }
                         }
                     }
                 }
