@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,9 +26,15 @@ namespace WindowsFormsAirs
         /// Количество уровней
         /// </summary>
         private const int countLevel = 5;
+
+        /// <summary>
+        /// Логгер
+        /// </summary>
+        private Logger logger;
         public FormHangar()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             hangar = new MultiLevelHangar(countLevel, pictureBoxHangar.Width,
            pictureBoxHangar.Height);
             //заполнение listBox
@@ -62,10 +69,10 @@ namespace WindowsFormsAirs
             {
                 if (maskedTextBox.Text != "")
                 {
-                    var air = hangar[listBoxLevels.SelectedIndex] -
-                   Convert.ToInt32(maskedTextBox.Text);
-                    if (air != null)
+                    try
                     {
+                        var air = hangar[listBoxLevels.SelectedIndex] -
+                       Convert.ToInt32(maskedTextBox.Text);
                         Bitmap bmp = new Bitmap(pictureBoxTakeAir.Width,
                        pictureBoxTakeAir.Height);
                         Graphics gr = Graphics.FromImage(bmp);
@@ -73,14 +80,22 @@ namespace WindowsFormsAirs
                        pictureBoxTakeAir.Height);
                         air.DrawAir(gr);
                         pictureBoxTakeAir.Image = bmp;
+                        logger.Info("Изъят самолет " + air.ToString() + " с места " + maskedTextBox.Text);
+                        Draw();
                     }
-                    else
+                    catch (HangarNotFoundException ex)
                     {
+                        MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                         Bitmap bmp = new Bitmap(pictureBoxTakeAir.Width,
                        pictureBoxTakeAir.Height);
                         pictureBoxTakeAir.Image = bmp;
                     }
-                    Draw();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -113,14 +128,21 @@ namespace WindowsFormsAirs
         {
             if (air != null && listBoxLevels.SelectedIndex > -1)
             {
-                int place = hangar[listBoxLevels.SelectedIndex] + air;
-                if (place > -1)
+                try
                 {
+                    int place = hangar[listBoxLevels.SelectedIndex] + air;
+                    logger.Info("Добавлен самолет " + air.ToString() + " на место " +
+                         place);
                     Draw();
                 }
-                else
+                catch (HangarOverflowException ex)
                 {
-                    MessageBox.Show("Самолет не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -131,17 +153,18 @@ namespace WindowsFormsAirs
         /// <param name="e"></param>
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (hangar.SaveData(saveFileDialog.FileName))
+                try
                 {
-                    MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    hangar.SaveData(saveFileDialog.FileName);
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -152,18 +175,24 @@ namespace WindowsFormsAirs
         /// <param name="e"></param>
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (hangar.LoadData(openFileDialog.FileName))
+                try
                 {
+                    hangar.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                 }
-                else
+                catch (HangarOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }          
                 Draw();
             }
         }
