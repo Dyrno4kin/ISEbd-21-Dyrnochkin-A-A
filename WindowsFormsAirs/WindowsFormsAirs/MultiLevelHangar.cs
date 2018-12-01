@@ -100,7 +100,7 @@ namespace WindowsFormsAirs
                                 //Записываемые параметры
                                 WriteToFile(air + Environment.NewLine, fs);
                             }
-                            catch (Exception ex) { }
+                            finally { }
                         }
                     }
                 }
