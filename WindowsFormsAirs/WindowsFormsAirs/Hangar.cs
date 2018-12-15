@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WindowsFormsAirs
     /// Параметризованны класс для хранения набора объектов от интерфейса IAir
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Hangar<T> where T : class, IAir
+    public class Hangar<T> : IEnumerator<T>, IEnumerable<T>, IComparable<Hangar<T>> where T : class, IAir
     {
         /// <summary>
         /// Массив объектов, которые храним
@@ -37,6 +38,19 @@ namespace WindowsFormsAirs
         /// Размер парковочного места (высота)
         /// </summary>
         private int _placeSizeHeight = 80;
+
+        /// <summary>
+        /// Текущий элемент для вывода через IEnumerator (будет обращаться по своему индексу к ключу словаря, по которму будет возвращаться запись)
+        /// </summary>
+        private int _currentIndex;
+
+        public int GetKey
+        {
+            get
+            {
+                return _places.Keys.ToList()[_currentIndex];
+            }
+        }
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -47,6 +61,7 @@ namespace WindowsFormsAirs
         {
             _maxCount = sizes;
             _places = new Dictionary<int, T>();
+            _currentIndex = -1;
             PictureWidth = pictureWidth;
             PictureHeight = pictureHeight;
         }
@@ -62,6 +77,10 @@ namespace WindowsFormsAirs
             if (p._places.Count == p._maxCount)
             {
                 throw new HangarOverflowException();
+            }
+            if (p._places.ContainsValue(air))
+            {
+                throw new HangarAlreadyHaveException();
             }
             for (int i = 0; i < p._maxCount; i++)
             {
@@ -109,11 +128,10 @@ namespace WindowsFormsAirs
         public void Draw(Graphics g)
         {
             DrawMarking(g);
-            var keys = _places.Keys.ToList();
-            for (int i = 0; i < keys.Count; i++)
+            foreach (var air in _places)
             {
-                _places[keys[i]].DrawAir(g);
-            }
+                air.Value.DrawAir(g);
+            }
         }
         /// <summary>
         /// Метод отрисовки разметки парковочных мест
@@ -162,6 +180,117 @@ namespace WindowsFormsAirs
                     throw new HangarOccupiedPlaceException(ind);
                 }
             }
+        }
+
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        public T Current
+        {
+            get
+            {
+                return _places[_places.Keys.ToList()[_currentIndex]];
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для получения текущего элемента
+        /// </summary>
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator, вызываемый при удалении объекта
+        /// </summary>
+        public void Dispose()
+        {
+            _places.Clear();
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для перехода к следующему элементу или началу коллекции
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveNext()
+        {
+            if (_currentIndex + 1 >= _places.Count)
+            {
+                Reset();
+                return false;
+            }
+            _currentIndex++;
+            return true;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerator для сброса и возврата к началу коллекции
+        /// </summary>
+        public void Reset()
+        {
+            _currentIndex = -1;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
+        /// <summary>
+        /// Метод интерфейса IEnumerable
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        /// <summary>
+        /// Метод интерфейса IComparable
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(Hangar<T> other)
+        {
+            if (_places.Count > other._places.Count)
+            {
+                return -1;
+            }
+            else if (_places.Count < other._places.Count)
+            {
+                return 1;
+            }
+            else if (_places.Count > 0)
+            {
+                var thisKeys = _places.Keys.ToList();
+                var otherKeys = other._places.Keys.ToList();
+                for (int i = 0; i < _places.Count; ++i)
+                {
+                    if (_places[thisKeys[i]] is Air && other._places[thisKeys[i]] is
+                   AirBus)
+                    {
+                        return 1;
+                    }
+                    if (_places[thisKeys[i]] is AirBus && other._places[thisKeys[i]] is
+                    Air)
+                    {
+                        return -1;
+                    }
+                    if (_places[thisKeys[i]] is Air && other._places[thisKeys[i]] is Air)
+                    {
+                        return (_places[thisKeys[i]] is
+                       Air).CompareTo(other._places[thisKeys[i]] is Air);
+                    }
+                    if (_places[thisKeys[i]] is AirBus && other._places[thisKeys[i]] is
+                    AirBus)
+                    {
+                        return (_places[thisKeys[i]] is
+                       AirBus).CompareTo(other._places[thisKeys[i]] is AirBus);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }
