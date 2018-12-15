@@ -74,8 +74,6 @@ namespace WindowsFormsAirs
             }
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
-                using (BufferedStream bs = new BufferedStream(fs))
-                {
                     //Записываем количество уровней
                     WriteToFile("CountLeveles:" + hangarStages.Count +
                    Environment.NewLine, fs);
@@ -83,25 +81,19 @@ namespace WindowsFormsAirs
                     {
                         //Начинаем уровень
                         WriteToFile("Level" + Environment.NewLine, fs);
-                        for (int i = 0; i < countPlaces; i++)
-                        {
-                            try
-                            {
-                                var air = level[i];
+                    foreach (IAir air in level)
+                    {
                                 //Записываем тип самолета
                                 if (air.GetType().Name == "Air")
                                 {
-                                    WriteToFile(i + ":Air:", fs);
+                                    WriteToFile(level.GetKey + ":Air:", fs);
                                 }
                                 if (air.GetType().Name == "AirBus")
                                 {
-                                    WriteToFile(i + ":AirBus:", fs);
+                                    WriteToFile(level.GetKey + ":AirBus:", fs);
                                 }
                                 //Записываемые параметры
                                 WriteToFile(air + Environment.NewLine, fs);
-                            }
-                            finally { }
-                        }
                     }
                 }
             }
@@ -158,6 +150,7 @@ namespace WindowsFormsAirs
                 throw new Exception("Неверный формат файла");
             }
             int counter = -1;
+            int counterAir = 0;
             IAir air = null;
             for (int i = 1; i < strs.Length; ++i)
             {
@@ -166,6 +159,7 @@ namespace WindowsFormsAirs
                 {
                     //начинаем новый уровень
                     counter++;
+                    counterAir = 0;
                     hangarStages.Add(new Hangar<IAir>(countPlaces, pictureWidth, pictureHeight));
                     continue;
                 }
@@ -181,8 +175,15 @@ namespace WindowsFormsAirs
                 {
                     air = new AirBus(strs[i].Split(':')[2]);
                 }
-                hangarStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = air;
+                hangarStages[counter][counterAir++] = air;
             }
+        }
+        /// <summary>
+        /// Сортировка уровней
+        /// </summary>
+        public void Sort()
+        {
+            hangarStages.Sort();
         }
     }
 }

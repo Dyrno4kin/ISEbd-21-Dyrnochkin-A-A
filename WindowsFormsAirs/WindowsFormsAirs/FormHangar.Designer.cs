@@ -44,6 +44,7 @@ namespace WindowsFormsAirs
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTakeAir)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -61,7 +62,7 @@ namespace WindowsFormsAirs
             // pictureBoxTakeAir
             // 
             this.pictureBoxTakeAir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxTakeAir.Location = new System.Drawing.Point(423, 252);
+            this.pictureBoxTakeAir.Location = new System.Drawing.Point(423, 295);
             this.pictureBoxTakeAir.Name = "pictureBoxTakeAir";
             this.pictureBoxTakeAir.Size = new System.Drawing.Size(179, 140);
             this.pictureBoxTakeAir.TabIndex = 1;
@@ -70,7 +71,7 @@ namespace WindowsFormsAirs
             // labelTakeAir
             // 
             this.labelTakeAir.AutoSize = true;
-            this.labelTakeAir.Location = new System.Drawing.Point(461, 204);
+            this.labelTakeAir.Location = new System.Drawing.Point(458, 247);
             this.labelTakeAir.Name = "labelTakeAir";
             this.labelTakeAir.Size = new System.Drawing.Size(122, 17);
             this.labelTakeAir.TabIndex = 4;
@@ -79,7 +80,7 @@ namespace WindowsFormsAirs
             // labelNumberMesto
             // 
             this.labelNumberMesto.AutoSize = true;
-            this.labelNumberMesto.Location = new System.Drawing.Point(451, 227);
+            this.labelNumberMesto.Location = new System.Drawing.Point(440, 267);
             this.labelNumberMesto.Name = "labelNumberMesto";
             this.labelNumberMesto.Size = new System.Drawing.Size(53, 17);
             this.labelNumberMesto.TabIndex = 5;
@@ -87,14 +88,14 @@ namespace WindowsFormsAirs
             // 
             // maskedTextBox
             // 
-            this.maskedTextBox.Location = new System.Drawing.Point(510, 224);
+            this.maskedTextBox.Location = new System.Drawing.Point(526, 267);
             this.maskedTextBox.Name = "maskedTextBox";
             this.maskedTextBox.Size = new System.Drawing.Size(73, 22);
             this.maskedTextBox.TabIndex = 6;
             // 
             // buttonTakeAir
             // 
-            this.buttonTakeAir.Location = new System.Drawing.Point(420, 398);
+            this.buttonTakeAir.Location = new System.Drawing.Point(420, 441);
             this.buttonTakeAir.Name = "buttonTakeAir";
             this.buttonTakeAir.Size = new System.Drawing.Size(179, 28);
             this.buttonTakeAir.TabIndex = 7;
@@ -145,14 +146,14 @@ namespace WindowsFormsAirs
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -165,9 +166,20 @@ namespace WindowsFormsAirs
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(428, 206);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(171, 38);
+            this.buttonSort.TabIndex = 12;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormHangar
             // 
-            this.ClientSize = new System.Drawing.Size(611, 438);
+            this.ClientSize = new System.Drawing.Size(611, 481);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonSetAir);
             this.Controls.Add(this.listBoxLevels);
             this.Controls.Add(this.buttonTakeAir);
@@ -202,5 +214,6 @@ namespace WindowsFormsAirs
         private ToolStripMenuItem загрузитьToolStripMenuItem;
         private SaveFileDialog saveFileDialog;
         private OpenFileDialog openFileDialog;
+        private Button buttonSort;
     }
 }

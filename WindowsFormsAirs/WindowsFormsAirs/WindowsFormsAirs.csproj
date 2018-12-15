@@ -75,6 +75,7 @@
     <Compile Include="FormHangar.Designer.cs">
       <DependentUpon>FormHangar.cs</DependentUpon>
     </Compile>
+    <Compile Include="HangarAlreadyHaveException.cs" />
     <Compile Include="IAir.cs" />
     <Compile Include="MultiLevelHangar.cs" />
     <Compile Include="Hangar.cs" />
